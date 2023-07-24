@@ -321,7 +321,7 @@ table td.new {
 /* -------------------------------------------------------------- 모바일 반응형 적용 */
 @media screen and (max-width: 768px) {
   .container {
-    top: 50px;
+    padding-top: 9%;
   }
 
   .mobile_none {

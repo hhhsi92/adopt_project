@@ -10,14 +10,6 @@ export const commonLoader = ({ request }: { request: Request }) => {
   let orderCate = url.searchParams.get("orderCate");
   let order = url.searchParams.get("order");
 
-  let userUuid = url.searchParams.get("userUuid");
-  let userNickname = url.searchParams.get("userNickname");
-  let userName = url.searchParams.get("userName");
-
-  let farmUuid = url.searchParams.get("farmUuid");
-  let farmName = url.searchParams.get("farmName");
-  let farmNo = url.searchParams.get("farmNo");
-
   return {
     page,
     pageSize,
@@ -28,12 +20,6 @@ export const commonLoader = ({ request }: { request: Request }) => {
     keyword,
     orderCate,
     order,
-    userUuid,
-    userNickname,
-    userName,
-    farmUuid,
-    farmName,
-    farmNo,
   };
 };
 
@@ -47,12 +33,4 @@ export interface commonLoaderType {
   keyword: string | null;
   orderCate: string | null;
   order: string | null;
-
-  userUuid: string | null;
-  userNickname: string | null;
-  userName: string | null;
-
-  farmUuid: string | null;
-  farmName: string | null;
-  farmNo: string | null;
 }

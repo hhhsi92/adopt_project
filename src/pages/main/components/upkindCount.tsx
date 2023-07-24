@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import TitleArea from "./titleArea";
 import axios from "axios";
 import Loading from "@/components/loading/loadSpinner";
+import { apiKey } from "@/config";
 
 export interface ResponseTypeCount {
   name: string;
@@ -13,8 +14,6 @@ export interface ResponseTypeCount {
 
 export default function UpkindCount() {
   const [isLoading, setIsLoading] = useState(true);
-
-  const apiKey = import.meta.env.VITE_API_KEY;
 
   const [counts, setCounts] = useState<ResponseTypeCount[]>([]);
   const [allCount, setAllCount] = useState<number>(0);
