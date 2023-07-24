@@ -1,0 +1,25 @@
+/* --------------------------------- searchFilter */
+.searchFilter {
+  background: #f7f7f7;
+  margin: 1.5rem 0;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.searchFilter .line {
+  margin-bottom: 17px;
+  display: flex;
+  align-items: center;
+}
+
+.searchFilter .line:last-of-type {
+  margin: 0;
+}
+
+.searchFilter .line span {
+  display: inline-block;
+  min-width: 90px;
+  color: #555;
+  font-size: 12px;
+  font-weight: 500;
+}

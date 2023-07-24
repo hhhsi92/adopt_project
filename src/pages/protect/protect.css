@@ -1,0 +1,201 @@
+/* --------------------------------- 회원목록 상세보기 */
+.component {
+  box-shadow: 0px 1px 12px rgba(0, 0, 0, 0.09);
+  background: white;
+  padding: 22px 25px;
+}
+
+.component .buyBtn {
+  width: 55px;
+  height: 20px;
+  left: 900px;
+  top: 38px;
+  background: #f7f7f7;
+  border-radius: 2px;
+  letter-spacing: -0.02em;
+  color: #888888;
+  font-weight: 600;
+  font-size: 10px;
+  line-height: 12px;
+}
+
+.component .left {
+  margin-right: 15px;
+}
+
+.component .right {
+  margin-right: auto;
+}
+
+.component .right h3 {
+  font-weight: 700;
+  font-size: 14px;
+  margin-right: 5px;
+}
+
+.component .right span {
+  font-weight: 500;
+  font-size: 13px;
+  opacity: 0.7;
+}
+
+.component .right p {
+  font-weight: 500;
+  font-size: 13px;
+}
+
+.component .right h2 {
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: -0.02em;
+}
+
+.component .right .dateinfo {
+  font-weight: 500;
+  font-size: 13px;
+  letter-spacing: -0.02em;
+  color: #888888;
+}
+
+.component .right .dateinfo strong {
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: -0.02em;
+  color: #888888;
+}
+
+.component .btnArea {
+  display: flex;
+  align-items: center;
+}
+
+.component .dateArea {
+  display: flex;
+}
+
+.component table {
+  width: 100%;
+}
+
+.back_list {
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: -0.02em;
+  color: #888888;
+  display: flex;
+  align-items: center;
+  box-shadow: none !important;
+}
+
+.DetailTableBack {
+  width: 50%;
+  padding: 1.5rem;
+  box-shadow: 0px 1px 12px rgba(0, 0, 0, 0.09) !important;
+}
+
+.DetailTableBack:first-of-type {
+  margin-right: 0.7rem;
+}
+
+.moreBtn {
+  margin-right: auto;
+  margin-left: 10px;
+  width: 38px;
+  height: 18px;
+  background: #f7f7f7;
+  border-radius: 2px;
+  border: none;
+  font-weight: 600;
+  font-size: 10px;
+  letter-spacing: -0.02em;
+  color: #888888;
+  cursor: pointer;
+}
+
+.pointTable th {
+  border-top: 1px solid var(--darkgray-border);
+  font-weight: 700;
+  font-size: 10px;
+  line-height: 12px;
+  color: #888888;
+  min-width: 4rem;
+  padding: 10px;
+  text-align: center;
+}
+
+.pointTable td {
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 16px;
+  padding: 10px;
+  text-align: center;
+}
+
+.modalTop {
+  text-align: center;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 140%;
+  letter-spacing: -0.05em;
+  color: #888888;
+  margin-bottom: 23px;
+}
+
+.modalTable th {
+  border-top: 1px solid #f0f0f1;
+  border-bottom: 1px solid #f0f0f1;
+  padding: 10px;
+  font-weight: 700;
+  font-size: 13px;
+  line-height: 16px;
+  text-align: center;
+  letter-spacing: -0.03em;
+  color: #888888;
+}
+
+.modalTable td {
+  border-bottom: 1px solid #f0f0f1;
+  padding: 12px;
+  font-weight: 500;
+  font-size: 14px;
+  text-align: center;
+  letter-spacing: -0.03em;
+}
+
+.modalTable td:first-of-type {
+  display: flex;
+  align-items: center;
+}
+
+.modalCheck {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.modalCheck label {
+  color: #888888;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+/* --------------------------------- 회원목록 상세보기*/
+/* --------------------------------- 공룡알 지급*/
+.selectContainer {
+  margin-top: 30px;
+}
+
+.selectContainer h3 {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 13px;
+  margin-bottom: 1em;
+}
+
+.payment .btnArea {
+  margin-top: 15px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* --------------------------------- 공룡알 지급*/

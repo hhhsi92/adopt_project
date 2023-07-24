@@ -1,0 +1,46 @@
+/* ----------------------------------------------------------- */
+/* table 공통 시작 */
+.table_back {
+  overflow-x: auto;
+  margin-right: auto;
+  margin-left: auto;
+  box-shadow: none !important;
+}
+.table_clickCell {
+  font-weight: bold;
+  cursor: pointer;
+}
+.table_clickCell:after {
+  content: "";
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  background: url("./img/info.png") center / 100%;
+  margin-left: 4px;
+}
+
+/* table 공통 끝 */
+/* ----------------------------------------------------------- */
+.board .right table {
+  border-top: 1px solid var(--darkgray-border);
+  border-bottom: 1px solid var(--darkgray-border);
+}
+
+.board .right table th {
+  font-weight: 700;
+  font-size: 11px;
+  line-height: 13px;
+  color: #888888;
+  height: 44px;
+  text-align: center;
+  padding: 0;
+}
+
+.board .right table td {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+  height: 44px;
+  text-align: center;
+}
+/* ----------------------------------------------------------- */

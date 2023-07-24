@@ -1,0 +1,87 @@
+.sidebar {
+  flex: 1;
+  width: 201px;
+  height: 100vh;
+  border-right: 1px solid var(--darkgray-border);
+  position: fixed;
+}
+
+.sidebar ul {
+  margin-top: 5.5px;
+}
+
+.sidebar ul li {
+  width: 100%;
+  height: 45px;
+  align-items: center;
+  display: flex;
+  padding: 22px;
+  border-left: 4px solid transparent;
+  box-sizing: border-box;
+}
+
+.sidebar ul li.menu a {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 24px;
+  letter-spacing: -0.02em;
+}
+
+.sidebar ul li.dropdown_menu a {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 24px;
+  letter-spacing: -0.02em;
+}
+
+.dropdown {
+  transform: rotate(180deg);
+  position: absolute;
+  right: 20px;
+}
+
+.sidebar_active .dropdown {
+  transform: rotate(0deg);
+}
+
+.sidebar ul li.dropdown_list {
+  height: 35px;
+  display: none;
+}
+
+.sidebar ul li.dropdown_list a,
+.sidebar ul li.dropdown_active a {
+  font-size: 11px;
+  line-height: 13px;
+  letter-spacing: -0.02em;
+  color: #888888;
+  font-weight: 400;
+}
+
+.sidebar ul.sidebar_active li.dropdown_list {
+  display: inline-flex;
+}
+
+.sidebar ul.sidebar_active li.menu,
+.sidebar ul.sidebar_active li.dropdown_menu {
+  border-left: 4px solid #49cec3;
+}
+
+.sidebar ul.sidebar_active li.dropdown_active {
+  background: #ebfaf7;
+  border-left: 4px solid #ebfaf7;
+}
+
+/* 선택자 UI 구분 */
+.sidebar_active .menu a,
+.sidebar_active .dropdown_menu a,
+.dropdown_active a {
+  color: #49cec3 !important;
+  font-weight: 700 !important;
+}
+
+@media screen and (max-width: 768px) {
+  .sidebar {
+    display: none;
+  }
+}

@@ -1,0 +1,39 @@
+.menuBar {
+    margin-bottom: 1rem;
+    display: flex;
+}
+
+.tabs {
+    list-style-type: none;
+    display: flex;
+    margin-left: auto;
+}
+
+.tabs li {
+    margin-left: auto;
+    padding: 10px 29px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    display: flex;
+    align-items: center;
+    letter-spacing: -0.02em;
+    color: #888888;
+    cursor: pointer;
+}
+
+.tabs li:hover {
+    color: #49cec3 !important;
+}
+
+.tabs li.active {
+    font-weight: 700;
+    color: #000000;
+    /* border-bottom: 1.5px solid; */
+}
+
+@media screen and (max-width: 768px) {
+    .tabs {
+        margin: auto;
+    }
+}

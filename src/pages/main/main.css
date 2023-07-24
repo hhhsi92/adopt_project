@@ -1,0 +1,153 @@
+.mainWrap {
+  padding-bottom: 70px;
+}
+
+.mainWrap .board {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.mainWrap .board .left {
+  width: 35%;
+  margin-right: 30px;
+}
+
+.mainWrap .board .right {
+  width: 65%;
+}
+
+.mainWrap .board .left .top p {
+  color: #888888;
+  margin: 0px 5px;
+  font-size: 14px;
+}
+
+.mainWrap .board .left .top a {
+  color: #888888;
+  letter-spacing: -0.02em;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 16px;
+  margin-left: auto;
+}
+
+.mainWrap .count .boxList {
+  width: 100%;
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.mainWrap .count .boxList .box {
+  background: #f7f7f7;
+  width: 18rem;
+  height: 8rem;
+  /* border-radius: 10px; */
+  margin: 0;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.mainWrap .count .boxList .box.highlight {
+  background: var(--main-color);
+  color: white;
+}
+
+.mainWrap .count .boxList .box.highlight .name {
+  color: #ffffff;
+  opacity: 0.8;
+}
+
+.mainWrap .count .boxList .box .name {
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: #888888;
+  margin-bottom: 0.8rem;
+}
+
+.mainWrap .count .boxList .box .cnt {
+  font-weight: 500;
+  font-size: 1.313rem;
+}
+
+.mainWrap .count .boxList .box .name {
+  margin-bottom: 0;
+}
+
+.mainWrap .count .boxList .area_box:first-of-type {
+  background: #666666;
+  color: white;
+}
+
+.mainWrap .count .boxList .area_box:first-of-type .name {
+  color: white;
+  opacity: 0.8;
+}
+
+.mainWrap .mau,
+.mainWrap .record {
+  margin-top: 2.5rem;
+}
+
+@media screen and (max-width: 768px) {
+  .mainWrap .top .search {
+    width: 100%;
+    margin: auto;
+    margin-top: 0.5rem;
+    flex-flow: column;
+  }
+
+  .mainWrap .search label {
+    margin: 0;
+  }
+
+  .mainWrap .search .searchBtn {
+    width: 100%;
+    height: 25px;
+    margin: 0;
+  }
+
+  .mainWrap .search select,
+  .mainWrap .search input {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+
+  .mainWrap .rank_menu {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .mainWrap .rank_menu .box {
+    width: 100%;
+    height: 5rem;
+    margin: 0;
+  }
+
+  .mainWrap .board {
+    flex-wrap: wrap;
+  }
+
+  .mainWrap .board .left,
+  .mainWrap .board .right {
+    width: 100%;
+    margin: auto;
+  }
+
+  .mainWrap .count .boxList {
+    flex-wrap: wrap;
+  }
+
+  .mainWrap .count .boxList .box {
+    width: 100%;
+    height: 5rem;
+  }
+
+  .mainWrap .count .boxList .box {
+    width: 100%;
+    height: 3.3rem;
+  }
+}

@@ -1,0 +1,337 @@
+* {
+  font-family: "Apple SD Gothic Neo", "Noto Sans KR";
+  font-style: normal;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  box-sizing: border-box;
+  border: none;
+}
+
+#root {
+  width: 100%;
+}
+
+body {
+  min-height: 100vh;
+  -ms-overflow-style: none;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+a {
+  text-decoration: none;
+  font-style: normal;
+  letter-spacing: -0.02em;
+  color: #000000;
+  transition: 0.2s;
+  align-items: center;
+}
+
+a:hover {
+  opacity: 0.5;
+}
+
+img {
+  vertical-align: top;
+  min-width: 15px;
+}
+
+textarea:focus,
+input:focus {
+  outline: none;
+}
+
+input::placeholder,
+textarea::placeholder {
+  font-size: 13px;
+  color: var(--gray-color);
+  opacity: 1;
+  font-weight: normal;
+}
+
+button {
+  cursor: pointer;
+  background: none;
+}
+
+ul li {
+  list-style: none;
+}
+
+.hide {
+  display: none;
+}
+
+.point {
+  color: #49cec3;
+  display: contents;
+}
+
+.list_icon {
+  width: 12px;
+  margin-right: 3px;
+}
+
+.tag_blue {
+  text-align: center;
+  background: #3a95ff;
+  color: #FFF;
+  width: 45px;
+  height: 20px;
+  font-size: 12px;
+  line-height: 22px;
+  border-radius: 5px;
+}
+
+.tag_pink {
+  text-align: center;
+  background: #ff5b5b;
+  color: #FFF;
+  width: 45px;
+  height: 20px;
+  font-size: 12px;
+  line-height: 22px;
+  border-radius: 5px;
+}
+
+.tag_gray {
+  text-align: center;
+  background: #888;
+  color: #FFF;
+  width: 45px;
+  height: 20px;
+  font-size: 12px;
+  line-height: 22px;
+  border-radius: 5px;
+}
+
+.underLine {
+  text-decoration: underline;
+}
+
+.container {
+  position: relative;
+  padding-top: 130px;
+  width: 100%;
+  min-height: calc(100vh - 130px);
+  padding-bottom: 60px;
+}
+
+.content {
+  flex: 4;
+  /* padding: 2rem 10rem 3.5rem; */
+  align-items: center;
+  justify-content: space-between;
+}
+
+.content_right {
+  /* flex: 4; */
+  padding: 2rem 2rem 6rem;
+  align-items: center;
+  justify-content: space-between;
+  position: absolute;
+  /* left: 201px; */
+  width: -webkit-fill-available;
+  overflow-y: hidden;
+  /* max-width: 1500px; */
+  min-height: 100%;
+}
+
+.content_right .title {
+  letter-spacing: -0.02em;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.content_right .titleWithBtn {
+  width: 62px;
+  height: 20px;
+  background: #49cec3;
+  border-radius: 3px;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 12px;
+  color: #ffffff;
+}
+
+.cancelBtn {
+  background: #f6f6f7 !important;
+  color: #888888 !important;
+}
+
+.nomalBtn {
+  background: #3d3d3d !important;
+}
+
+.pointBtn {
+  background: #49cec3 !important;
+  color: #ffffff !important;
+}
+
+.detail {
+  background: #f7f7f7;
+  display: flex;
+  justify-content: center;
+}
+
+.flex_between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.ellipsis {
+  display: block;
+  height: 1.4em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.4;
+  white-space: nowrap;
+  max-width: 100%;
+}
+
+/* -------------------------------------------------------------- 이미지 아이콘 */
+.profile_img {
+  width: 50px;
+  height: 50px;
+  background: url(../common/img/profile.png) no-repeat;
+}
+
+.mini {
+  width: 50px !important;
+  height: 50px !important;
+  background-size: 50px !important;
+  margin-right: 5px;
+}
+
+/* -------------------------------------------------------------- 라이브러리, input */
+.react-datepicker-wrapper {
+  width: auto !important;
+}
+
+.datepicker_input {
+  width: 7rem;
+  height: 28px;
+  background: #ffffff;
+  border: 1px solid var(--darkgray-border);
+  border-radius: 2px;
+  padding: 0px 10px;
+  background-image: url(./img/calendar.svg);
+  background-repeat: no-repeat;
+  background-position: right;
+}
+
+.datepicker_input:disabled {
+  background: var(--gray-bg);
+  color: var(--gray-color);
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  margin-right: 5px;
+  vertical-align: middle;
+}
+
+textarea {
+  resize: none;
+}
+
+.radioLabel {
+  margin-right: 15px;
+  font-weight: 500;
+  font-size: 13px;
+  color: #888888;
+}
+
+/* -------------------------------------------------------------- 라이브러리, input */
+/* -------------------------------------------------------------- table */
+table tr.new {
+  background: #fffcf1;
+}
+
+table td.new {
+  /* background: url(../common/img/new.png) no-repeat right/11px; */
+  background: right / contain no-repeat url(../common/img/new.png);
+  background-size: 11px;
+  background-position: 90%, 0;
+}
+
+.MainTable {
+  border-top: 1px solid #3d3d3d;
+}
+
+.MainTable th {
+  background: #f7f7f7;
+  padding: 11px;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 13px;
+  color: #888888;
+}
+
+.MainTable td {
+  padding: 14px;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 16px;
+}
+
+.MainTable select {
+  background: #ffffff;
+  border: 1px solid var(--darkgray-border);
+  border-radius: 3px;
+  font-weight: 700;
+  font-size: 10px;
+  line-height: 12px;
+  color: #49cec3;
+  padding: 4px;
+  cursor: pointer;
+}
+
+.SimpleTable th {
+  background: #f7f7f7;
+  border-top: 1px solid var(--darkgray-border);
+  border-bottom: 1px solid var(--darkgray-border);
+  width: 15%;
+  padding: 14px;
+  font-weight: 700;
+  font-size: 13px;
+  color: #888888;
+  text-align: left;
+}
+
+.SimpleTable td {
+  border: 1px solid var(--darkgray-border);
+  padding: 12px;
+  font-weight: 500;
+  font-size: 13px;
+  letter-spacing: -0.02em;
+  text-align: left;
+}
+
+/* -------------------------------------------------------------- table */
+.react-datepicker__navigation-icon {
+  min-width: 0 !important;
+}
+
+/* -------------------------------------------------------------- 모바일 반응형 적용 */
+@media screen and (max-width: 768px) {
+  .container {
+    top: 50px;
+  }
+
+  .mobile_none {
+    display: none;
+  }
+
+  .content_right {
+    left: 0;
+    position: relative;
+  }
+}
+
+/* -------------------------------------------------------------- 모바일 반응형 적용 */
