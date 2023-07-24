@@ -26,7 +26,8 @@ export default function UpkindCount() {
       try {
         let params: any = {
           serviceKey: apiKey,
-          _type: "json"
+          _type: "json",
+          withCredentials: true
         };
   
         const response_all = await axios.get("/api/1543061/abandonmentPublicSrvc/abandonmentPublic", { params });
