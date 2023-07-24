@@ -10,11 +10,11 @@ import { router as shelterRouter } from "./pages/shelter/router";
 
 export const router = createBrowserRouter([
   {
-    path: "/adopt_project",
+    path: "/",
     element: <App />,
     children: [
       {
-        path: "/adopt_project",
+        path: "/",
         element: <Main />,
       },
       // 로그인

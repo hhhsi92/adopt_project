@@ -16,19 +16,19 @@ export const menus: Menu[] = [
   {
     title: "공고",
     id: "notice",
-    link: "/adopt_project/notice",
+    link: "/notice",
     defaultLink: "/list",
   },
   {
     title: "보호중 동물",
     id: "protect",
-    link: "/adopt_project/protect",
+    link: "/protect",
     defaultLink: "/list",
   },
   {
     title: "동물보호센터",
     id: "shelter",
-    link: "/adopt_project/shelter",
+    link: "/shelter",
     defaultLink: "/list",
   },
 ];

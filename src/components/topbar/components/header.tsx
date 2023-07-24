@@ -23,7 +23,7 @@ export default function Header() {
       <StyledHeader>
         <div className="left">
           <div className="logo">
-            <Link to="/adopt_project">
+            <Link to="/">
               <div className="title">
                 🐶 <div className="point">Adopt,</div> don’t Buy
               </div>

@@ -28,7 +28,7 @@ export default function MobileMenu() {
     <div className="mobileMenu">
       <Topper>
         <div className="logo">
-          <Link to="/adopt_project">
+          <Link to="/">
             <div className="title">
               🐶 <div className="point">Adopt,</div> don’t Buy
             </div>
