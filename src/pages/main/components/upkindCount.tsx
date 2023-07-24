@@ -18,6 +18,8 @@ export default function UpkindCount() {
   const [counts, setCounts] = useState<ResponseTypeCount[]>([]);
   const [allCount, setAllCount] = useState<number>(0);
   const _types: ResponseTypeCount[] = [];
+
+  const api_proxy = window.location.hostname === 'localhost' ? '' : '/api';
   
   useEffect(() => {
     const getData = async () => {
@@ -29,7 +31,7 @@ export default function UpkindCount() {
           withCredentials: true
         };
   
-        const response_all = await axios.get("/api/1543061/abandonmentPublicSrvc/abandonmentPublic", { params });
+        const response_all = await axios.get(`/api/1543061/abandonmentPublicSrvc/abandonmentPublic`, { params });
         const totalCount = response_all.data.response.body.totalCount;
         setAllCount(totalCount);
 
