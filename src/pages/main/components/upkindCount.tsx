@@ -3,7 +3,7 @@ import { ApiResponse } from "@/common/Types";
 import { useState, useEffect } from "react";
 import TitleArea from "./titleArea";
 import axios from "axios";
-import Loading from "@/components/loading/loadSpinner";
+import Loading, { ContentLoading } from "@/components/loading/loadSpinner";
 import { apiKey } from "@/config";
 
 export interface ResponseTypeCount {
@@ -28,7 +28,7 @@ export default function UpkindCount() {
         let params: any = {
           serviceKey: apiKey,
           _type: "json",
-          withCredentials: true
+          numOfRows: 1,
         };
   
         const response_all = await axios.get(`/api/1543061/abandonmentPublicSrvc/abandonmentPublic`, { params });
@@ -42,6 +42,7 @@ export default function UpkindCount() {
             serviceKey: apiKey,
             _type: "json",
             upkind: "417000",
+            numOfRows: 1,
           }
         });
         
@@ -59,6 +60,7 @@ export default function UpkindCount() {
             serviceKey: apiKey,
             _type: "json",
             upkind: "422400",
+            numOfRows: 1,
           }
         });
         catCount = response_cat.data.response.body.totalCount;
@@ -75,6 +77,7 @@ export default function UpkindCount() {
             serviceKey: apiKey,
             _type: "json",
             upkind: "429900",
+            numOfRows: 1,
           }
         });
         etcCount = response_etc.data.response.body.totalCount;
@@ -97,7 +100,7 @@ export default function UpkindCount() {
   }, []);
 
   if (isLoading) {
-    return <Loading />;
+    return <ContentLoading />;
   }
   return (
     <div className="count">

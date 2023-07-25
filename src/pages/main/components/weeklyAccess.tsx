@@ -9,20 +9,19 @@ import { ContentLoading } from "@/components/loading/loadSpinner";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import TitleArea from "./titleArea";
+import { apiKey } from "@/config";
+import axios from "axios";
 
 const d = new Date();
 const year = d.getFullYear();
 const month = d.getMonth();
 const day = d.getDate();
 
-const userTypeData = [
+const typeData = [
   { value: "전체", label: "전체" },
-  { value: "사이트관리자", label: "사이트관리자" },
-  { value: "농가회원", label: "농가회원" },
-  { value: "파트너스", label: "파트너스" },
-  { value: "수정사", label: "수정사" },
-  { value: "일반회원", label: "일반회원" },
-  { value: "탈퇴회원", label: "탈퇴회원" },
+  { value: "417000", label: "개" },
+  { value: "422400", label: "고양이" },
+  { value: "429900", label: "기타" },
 ];
 
 interface rank {
@@ -72,27 +71,32 @@ export default function WeeklyAccess() {
   const getRanks = async (startDate: string, endDate: string, userType: string) => {
     setIsLoading(true);
     try {
+      console.log(startDate);
+      console.log(endDate);
+      
+      
       const params: any = {
-        startDate,
-        endDate,
-        type: userType,
+        serviceKey: apiKey,
+        _type: "json",
+        bgnde: startDate.replaceAll("-", ""),
+        endde: endDate.replaceAll("-", ""),
+        // type: userType,
       };
-      const {
-        data: { data },
-      } = await api.get<ApiResponse<ResponseRank[]>>("v1/adm/week/status/connect", { params });
+      const response = await axios.get("/api/1543061/abandonmentPublicSrvc/abandonmentPublic", { params });
+      console.log(response.data.response.body.totalCount);
 
-      setResponseRank(data);
+      // setResponseRank(data);
 
-      const _ranks: rank[] = [];
-      for (let i = 0; i < 5; i++) {
-        _ranks.push({
-          rank: i + 1,
-          name: data[i] === undefined ? "-" : data[i].name,
-          view: data[i] === undefined ? 0 : data[i].count,
-        });
-      }
+      // const _ranks: rank[] = [];
+      // for (let i = 0; i < 5; i++) {
+      //   _ranks.push({
+      //     rank: i + 1,
+      //     name: data[i] === undefined ? "-" : data[i].name,
+      //     view: data[i] === undefined ? 0 : data[i].count,
+      //   });
+      // }
 
-      setRanks(_ranks);
+      // setRanks(_ranks);
     } catch (err) {
       console.log(err);
     }
@@ -110,11 +114,11 @@ export default function WeeklyAccess() {
   return (
     <>
       <TitleArea
-        title="주간 접속현황"
+        title="일주일간 유기동물 현황"
         titleContent={
           <SearchArea>
-            <label>조회 회원 선택</label>
-            <Selectbox name="userType" options={userTypeData} value={userType} onChange={setUserType} />
+            <label>조회 동물 선택</label>
+            <Selectbox name="userType" options={typeData} value={userType} onChange={setUserType} />
             <PeriodSelector
               name="period"
               startDate={startDate}
@@ -156,6 +160,10 @@ const SearchArea = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-end;
+
+  @media screen and (max-width: 768px) {
+    display: inline-grid;
+  }
 
   & > *:not(:last-child) {
     margin-right: 1em;

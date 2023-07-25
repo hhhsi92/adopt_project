@@ -12,11 +12,11 @@ import TableContainer from "@mui/material/TableContainer";
 import TableRow from "@mui/material/TableRow";
 import { useEffect, useState } from "react";
 import { useLoaderData, useLocation, useNavigate } from "react-router-dom";
-
 import Button from "@/components/button/Button";
 import ListImage from "@/components/table/common/ListImage";
 import axios from "axios";
 import { loaderDataInterface } from "../list";
+
 
 interface DataProps {
   desertionNo: string;
@@ -61,7 +61,7 @@ interface SetDateProps {
   endDate: string;
 }
 
-export default function UserListTable(props: SetDateProps) {
+export default function NoticeListTable(props: SetDateProps) {
   const { startDate, endDate } = props;
 
   const location = useLocation();
@@ -89,37 +89,24 @@ export default function UserListTable(props: SetDateProps) {
           state: "notice",
           pageNo: page,
           numOfRows: pageSize,
-          upkind:
-            filterData.type && filterData.type !== "전체"
-              ? filterData.type
-              : null,
-          upr_cd:
-            filterData.location && filterData.location !== "전체"
-              ? filterData.location
-              : null,
-          bgnde:
-            filterData.createDate && filterData.createDate === "기간선택"
-              ? filterData.createDateStart.replaceAll("-", "")
-              : null,
-          endde:
-            filterData.createDate && filterData.createDate === "기간선택"
-              ? filterData.createDateEnd.replaceAll("-", "")
-              : null,
+          upkind: filterData.type && filterData.type !== "전체" ? filterData.type : null,
+          upr_cd: filterData.location && filterData.location !== "전체" ? filterData.location : null,
+          bgnde: filterData.createDate && filterData.createDate === "기간선택" ? filterData.createDateStart.replaceAll("-", "") : null,
+          endde: filterData.createDate && filterData.createDate === "기간선택" ? filterData.createDateEnd.replaceAll("-", "") : null,
         };
-        // console.log(params);
 
-        const response = await axios.get(
-          "/api/1543061/abandonmentPublicSrvc/abandonmentPublic",
-          { params }
-        );
+
+        const response = await axios.get("/api/1543061/abandonmentPublicSrvc/abandonmentPublic", { params });
         // console.log(response.data.response.body.items.item);
         setInfo(response.data.response.body.items.item);
         setAllCount(response.data.response.body.totalCount);
+
       } catch (err) {
         console.log(err);
       }
 
       setIsLoading(false);
+
     };
 
     getList();
@@ -180,11 +167,7 @@ export default function UserListTable(props: SetDateProps) {
                     <TableCell>{row.age}</TableCell>
                     <TableCell>{row.noticeNo}</TableCell>
                     <TableCell>
-                      <img
-                        src="https://img.icons8.com/ios/250/000000/marker.png"
-                        alt=""
-                        className="list_icon"
-                      />
+                      <img src="https://img.icons8.com/ios/250/000000/marker.png" alt="" className="list_icon"/>
                       {row.happenPlace}
                     </TableCell>
                     <TableCell>{StringDateDot(row.happenDt)}</TableCell>

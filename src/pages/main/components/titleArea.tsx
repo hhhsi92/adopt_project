@@ -20,6 +20,11 @@ const Container = styled.div`
   align-items: center;
   justify-content: space-between;
 
+  @media screen and (max-width: 768px) {
+    display: inline-block;
+    width: 100%;
+  }
+
   & h2 {
     font-weight: 700;
     font-size: 1.125rem;

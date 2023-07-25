@@ -11,8 +11,13 @@ export default function Main() {
     <>
       <div className="mainWrap">
         <Wrapper>
+          
           <Section>
             <UpkindCount />
+          </Section>
+
+          <Section>
+            <WeeklyAccess />
           </Section>
 
           <Section>
@@ -24,10 +29,6 @@ export default function Main() {
                 <Tab />
               </div>
             </div>
-          </Section>
-
-          <Section>
-            {/* <WeeklyAccess /> */}
           </Section>
 
         </Wrapper>

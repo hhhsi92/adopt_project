@@ -90,6 +90,10 @@ export default function ListTable() {
     } catch (error) {}
   };
 
+  const setData = async (loadData: DataProps) => {
+    navigate(loadData.careNm, { state: { loadData } });
+  };
+
   useEffect(() => {
     const getList = async () => {
       setIsLoading(true);
@@ -149,7 +153,7 @@ export default function ListTable() {
             {info && info.length > 0 ? (
               info.map((row: DataProps, index) => {
                 return (
-                  <TableRow hover tabIndex={-1}key={`${index}_${row.careNm}`}>
+                  <TableRow hover tabIndex={-1} key={`${index}_${row.careNm}`} onClick={() => {setData(row)}} style={{ cursor: "pointer" }}>
                     <TableCell>
                       {allCount - page * pageSize - index + pageSize}
                     </TableCell>
@@ -158,12 +162,14 @@ export default function ListTable() {
                       {row.careNm}
                     </TableCell>
                     <TableCell>
+                    <a href={"tel:" + row.careTel}>
                       <img
                         src="https://img.icons8.com/ios/250/000000/phone.png"
                         alt=""
                         className="list_icon"
                       />
                       {row.careTel}
+                      </a>
                     </TableCell>
                     <TableCell>
                       <img
@@ -174,12 +180,11 @@ export default function ListTable() {
                       {imgNameCut(row.careAddr)}
                     </TableCell>
                     <TableCell>
-                    <Button
+                      <Button
                         title={row.divisionNm}
                         narrow
                         theme={row.divisionNm === "법인" ? "gray" : "green"}
                         lightColor
-                        onClick={() => {}}
                       />  
                     </TableCell>
                     <TableCell>{row.weekOprStime && row.weekOprStime + " ~ " + row.weekOprEtime}</TableCell>
