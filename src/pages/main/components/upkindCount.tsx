@@ -6,6 +6,7 @@ import axios from "axios";
 import Loading, { ContentLoading } from "@/components/loading/loadSpinner";
 import { apiKey } from "@/config";
 
+
 export interface ResponseTypeCount {
   name: string;
   count: number;
@@ -18,12 +19,12 @@ export default function UpkindCount() {
   const [counts, setCounts] = useState<ResponseTypeCount[]>([]);
   const [allCount, setAllCount] = useState<number>(0);
   const _types: ResponseTypeCount[] = [];
-
-  const api_proxy = window.location.hostname === 'localhost' ? '' : '/api';
   
   useEffect(() => {
     const getData = async () => {
+
       setIsLoading(true);
+
       try {
         let params: any = {
           serviceKey: apiKey,
@@ -80,6 +81,7 @@ export default function UpkindCount() {
             numOfRows: 1,
           }
         });
+
         etcCount = response_etc.data.response.body.totalCount;
 
         _types.push({

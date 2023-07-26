@@ -1,28 +1,28 @@
-import "../chart.css";
 import { useEffect, useState } from "react";
+import "../chart.css";
 
 import {
-  Bar,
-  BarChart,
+  Area,
+  AreaChart,
   CartesianGrid,
   Legend,
   ResponsiveContainer,
   Tooltip,
-  XAxis,
-  YAxis,
   TooltipProps,
+  XAxis,
+  YAxis
 } from "recharts";
 
-import {
-  ValueType,
-  NameType,
-} from "recharts/src/component/DefaultTooltipContent";
 import { ResponseRank } from "@/pages/main/components/weeklyAccess";
+import {
+  NameType,
+  ValueType,
+} from "recharts/src/component/DefaultTooltipContent";
 
 
 interface chartData {
   name: string;
-  mobile: number;
+  공고중: number;
 }
 
 
@@ -35,7 +35,7 @@ const CustomTooltip = ({
     return (
       <div className="custom-tooltip">
         <p className="label">{`${label}`}</p>
-        <p className="desc">{payload[0].value}명 접속</p>
+        <p className="desc">{payload[0].value}마리</p>
       </div>
     );
   }
@@ -43,11 +43,11 @@ const CustomTooltip = ({
   return null;
 };
 
-interface VisitorChartProps {
+interface ChartProps {
   rank: ResponseRank[]
 }
 
-export default function VisitorChart(props: VisitorChartProps) {
+export default function WeekChart(props: ChartProps) {
   const { rank } = props;
 
   const [chartData, setChartData] = useState<chartData[]>([]);
@@ -58,7 +58,7 @@ export default function VisitorChart(props: VisitorChartProps) {
     for (let i = 0; i < 7; i++) {
       _chartData.push({
         name: rank[i] === undefined ? "-" : rank[i].name,
-        mobile: rank[i] === undefined ? 0 : rank[i].count,
+        공고중: rank[i] === undefined ? 0 : rank[i].count,
       });
     }
 
@@ -69,7 +69,7 @@ export default function VisitorChart(props: VisitorChartProps) {
   return (
     <div className="chart">
       <ResponsiveContainer width="100%" height="100%">
-        <BarChart
+        <AreaChart
           height={246}
           data={chartData}
           margin={{
@@ -101,8 +101,8 @@ export default function VisitorChart(props: VisitorChartProps) {
               letterSpacing: "-0.04em",
             }}
           />
-          <Bar dataKey="mobile" barSize={57} fill="#49cec3" />
-        </BarChart>
+          <Area dataKey="공고중" stroke="#3d3d3d" fill="#49cec3" label={{ position: 'top', fontSize: '11px' }}/>
+        </AreaChart>
       </ResponsiveContainer>
     </div>
   );

@@ -21,6 +21,7 @@ import { Link, useNavigate } from "react-router-dom";
 import ListImage from "../common/ListImage";
 import SmallTable from "../common/smallTable";
 import "../table.css";
+import { ContentLoading } from "@/components/loading/loadSpinner";
 
 interface Props {
   type: string;
@@ -31,6 +32,8 @@ interface Props {
 export default function BoardTable(props: Props) {
   const { type, url, link } = props;
   const pageSize = 5;
+
+  const [isLoading, setIsLoading] = useState(false);
 
   const [info, setInfo] = useState<DataProps[]>([]);
   const [allCount, setAllCount] = useState(0);
@@ -43,6 +46,7 @@ export default function BoardTable(props: Props) {
 
   useEffect(() => {
     const getData = async () => {
+      setIsLoading(true);
       try {
         const params: any = {
           serviceKey: apiKey,
@@ -58,11 +62,16 @@ export default function BoardTable(props: Props) {
       } catch (err) {
         console.log(err);
       }
+
+      setIsLoading(false);
     };
 
     getData();
   }, [url]);
 
+  if (isLoading) {
+    return <ContentLoading />;
+  }
   return (
     <SmallTable>
       <Table size="small">

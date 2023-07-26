@@ -1,10 +1,22 @@
 import { KeyboardEvent } from "react";
-import api from "@common/API";
 import ColoredCategory from "@/components/table/common/ColoredCategory";
 
 export function replaceUrlParameter(url: string) {
   url = url.replace(/&/g, "%26").replace(/\+/g, "%2B");
   return url;
+}
+
+//일주일 간의 날짜 구하기 (오늘날짜 ~ 7일전까지)
+export function getCurrentWeek() {
+  const day = new Date();
+  const result = [day.toISOString().slice(0, 10)];
+
+  for (let i = 1; i < 7; i++) {
+    day.setTime(day.getTime() - 86400000);
+    result.push(day.toISOString().slice(0, 10));
+  }
+  
+  return result;
 }
 
 //유기동물 종류 반환

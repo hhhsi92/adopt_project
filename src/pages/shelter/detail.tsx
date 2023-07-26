@@ -1,3 +1,4 @@
+import { getBlankString } from "@/common/Func";
 import Button from "@/components/button/Button";
 import { FullBox } from "@/components/layout/boxContent";
 import DetailPage from "@/components/layout/detailPage";
@@ -49,32 +50,32 @@ export default function Detail() {
           </TableRow>
           <TableRow>
             <th>구조대상동물</th>
-            <td>{loadData.saveTrgtAnimal && loadData.saveTrgtAnimal}</td>
+            <td>{getBlankString(loadData.saveTrgtAnimal)}</td>
             <th>동물보호센터지정일자</th>
-            <td>{loadData.dsignationDate && loadData.dsignationDate}</td>
+            <td>{getBlankString(loadData.dsignationDate)}</td>
           </TableRow>
           <TableRow>
             <th>수의사수</th>
-            <td>{loadData.vetPersonCnt && loadData.vetPersonCnt + `명`}</td>
+            <td>{loadData.vetPersonCnt ? `${loadData.vetPersonCnt}명` : getBlankString(loadData.vetPersonCnt)}</td>
             <th>사양관리사수</th>
-            <td>{loadData.specsPersonCnt && loadData.specsPersonCnt + `명`}</td>
+            <td>{loadData.specsPersonCnt ? `${loadData.specsPersonCnt}명` : getBlankString(loadData.specsPersonCnt)}</td>
           </TableRow>
           <TableRow>
             <th>진료실수</th>
-            <td>{loadData.medicalCnt && loadData.medicalCnt + `실`}</td>
+            <td>{loadData.medicalCnt ? `${loadData.medicalCnt}실` : getBlankString(loadData.medicalCnt)}</td>
             <th>사육실수</th>
-            <td>{loadData.breedCnt && loadData.breedCnt + `실`}</td>
+            <td>{loadData.breedCnt ? `${loadData.breedCnt}실` : getBlankString(loadData.breedCnt)}</td>
           </TableRow>
           <TableRow>
             <th>격리실수</th>
-            <td>{loadData.quarabtineCnt && loadData.quarabtineCnt + `실`}</td>
+            <td>{loadData.quarabtineCnt ? `${loadData.quarabtineCnt}실` : getBlankString(loadData.quarabtineCnt)}</td>
             <th>사료보관실수</th>
-            <td>{loadData.feedCnt && loadData.feedCnt + `실`}</td>
+            <td>{loadData.feedCnt ? `${loadData.feedCnt}실` : getBlankString(loadData.feedCnt)}</td>
           </TableRow>
           <TableRow>
             <th>구조운반용차량보유대수</th>
             <td colSpan={3}>
-              {loadData.transCarCn && loadData.transCarCnt + `대`}
+              {loadData.transCarCn ? `${loadData.transCarCnt}대` : getBlankString(loadData.transCarCnt)}
             </td>
           </TableRow>
           <TableRow>
@@ -86,7 +87,7 @@ export default function Detail() {
               />
               보호센터주소
             </th>
-            <td colSpan={3}>{loadData.careAddr && loadData.careAddr}</td>
+            <td colSpan={3}>{getBlankString(loadData.careAddr)}</td>
           </TableRow>
         </TableBody>
       </Table>
@@ -111,7 +112,7 @@ export default function Detail() {
                 alt=""
                 className="list_icon"
               />
-              {loadData.weekOprStime && loadData.weekOprStime + " ~ " + loadData.weekOprEtime}
+              {loadData.weekOprStime ? loadData.weekOprStime + " ~ " + loadData.weekOprEtime : "-"}
             </td>
             <th>평일분양시간</th>
             <td>
@@ -120,7 +121,7 @@ export default function Detail() {
                 alt=""
                 className="list_icon"
               />
-              {loadData.weekCellStime && loadData.weekCellStime + " ~ " + loadData.weekCellEtime}
+              {loadData.weekCellStime ? loadData.weekCellStime + " ~ " + loadData.weekCellEtime : "-"}
             </td>
           </TableRow>
           <TableRow>
@@ -131,7 +132,7 @@ export default function Detail() {
                 alt=""
                 className="list_icon"
               />
-              {loadData.weekendOprStime && loadData.weekendOprStime + " ~ " + loadData.weekendOprEtime}
+              {loadData.weekendOprStime ? loadData.weekendOprStime + " ~ " + loadData.weekendOprEtime : "-"}
             </td>
             <th>주말분양시간</th>
             <td>
@@ -140,7 +141,7 @@ export default function Detail() {
                 alt=""
                 className="list_icon"
               />
-              {loadData.weekendCellStime && loadData.weekendCellStime + " ~ " + loadData.weekendCellEtime}
+              {loadData.weekendCellStime ? loadData.weekendCellStime + " ~ " + loadData.weekendCellEtime : "-"}
             </td>
           </TableRow>
           <TableRow>
@@ -152,7 +153,7 @@ export default function Detail() {
               />
               휴무일
             </th>
-            <td colSpan={3}>{loadData.closeDay === "0" ? "-" : loadData.closeDay}</td>
+            <td colSpan={3}>{getBlankString(loadData.closeDay)}</td>
           </TableRow>
         </TableBody>
       </Table>

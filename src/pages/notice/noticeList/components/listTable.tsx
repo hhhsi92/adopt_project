@@ -106,7 +106,6 @@ export default function NoticeListTable(props: SetDateProps) {
       }
 
       setIsLoading(false);
-
     };
 
     getList();

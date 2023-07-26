@@ -1,21 +1,12 @@
-import api from "@/common/API";
-import { CommaNumber, StringDate } from "@/common/Func";
-import { ApiResponse } from "@/common/Types";
-import Button from "@/components/button/Button";
-import VisitorChart from "@/components/chart/main/VisitorChart";
-import PeriodSelector from "@/components/form/periodSelector";
+import { getCurrentWeek } from "@/common/Func";
+import WeekChart from "@/components/chart/main/WeekChart";
 import Selectbox from "@/components/form/selectbox";
 import { ContentLoading } from "@/components/loading/loadSpinner";
+import { apiKey } from "@/config";
+import axios from "axios";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import TitleArea from "./titleArea";
-import { apiKey } from "@/config";
-import axios from "axios";
-
-const d = new Date();
-const year = d.getFullYear();
-const month = d.getMonth();
-const day = d.getDate();
 
 const typeData = [
   { value: "전체", label: "전체" },
@@ -37,96 +28,64 @@ export interface ResponseRank {
 
 export default function WeeklyAccess() {
   const [isLoading, setIsLoading] = useState(false);
-  const [startDate, setStartDate] = useState(StringDate(new Date(year, month, day - 6)));
-  const [endDate, setEndDate] = useState(StringDate(new Date()));
   const [userType, setUserType] = useState("전체");
-  const [filter, setFilter] = useState({
-    startDate: "",
-    endDate: "",
-    userType: "",
-  });
+
   const [ranks, setRanks] = useState<rank[]>([]);
   const [responseRank, setResponseRank] = useState<ResponseRank[]>([]);
 
   useEffect(() => {
-    let searchStartDate = startDate;
-    let searchEndDate = endDate;
     let searchUserType = userType;
 
-    if (searchStartDate === undefined || searchStartDate == null) {
-      searchStartDate = filter.startDate;
-    }
+    getRanks(searchUserType);
+  }, [userType]);
 
-    if (searchEndDate === undefined || searchEndDate == null) {
-      searchEndDate = filter.endDate;
-    }
-
-    if (searchUserType === undefined || searchUserType == null) {
-      searchUserType = filter.userType;
-    }
-
-    getRanks(searchStartDate, searchEndDate, searchUserType);
-  }, [endDate, filter, startDate, userType]);
-
-  const getRanks = async (startDate: string, endDate: string, userType: string) => {
+  const getRanks = async (userType: string) => {
     setIsLoading(true);
-    try {
-      console.log(startDate);
-      console.log(endDate);
-      
-      
-      const params: any = {
+    
+    const _ranks: ResponseRank[] = [];
+
+    const weeks = getCurrentWeek().reverse();
+    
+    for (const data of weeks) {      
+      let params: any = {
         serviceKey: apiKey,
         _type: "json",
-        bgnde: startDate.replaceAll("-", ""),
-        endde: endDate.replaceAll("-", ""),
-        // type: userType,
+        state: "notice",
+        numOfRows: 1,
+        bgnde: data.replaceAll("-", ""),
+        endde: data.replaceAll("-", ""),
+        upkind: userType && userType !== "전체" ? userType : null,
       };
-      const response = await axios.get("/api/1543061/abandonmentPublicSrvc/abandonmentPublic", { params });
-      console.log(response.data.response.body.totalCount);
+      let response_all = await axios.get(
+        `/api/1543061/abandonmentPublicSrvc/abandonmentPublic`,
+        { params }
+      );
+      let count = response_all.data.response.body.totalCount;
+      
+      _ranks.push({
+        name: data,
+        count: count,
+      });
 
-      // setResponseRank(data);
-
-      // const _ranks: rank[] = [];
-      // for (let i = 0; i < 5; i++) {
-      //   _ranks.push({
-      //     rank: i + 1,
-      //     name: data[i] === undefined ? "-" : data[i].name,
-      //     view: data[i] === undefined ? 0 : data[i].count,
-      //   });
-      // }
-
-      // setRanks(_ranks);
-    } catch (err) {
-      console.log(err);
+      setResponseRank(_ranks);
     }
-    setIsLoading(false);
-  };
 
-  const adjustFilter = () => {
-    setFilter({
-      startDate,
-      endDate,
-      userType,
-    });
+    setIsLoading(false);
   };
 
   return (
     <>
       <TitleArea
-        title="일주일간 유기동물 현황"
+        title="최근 일주일 유기동물 공고 현황"
         titleContent={
           <SearchArea>
             <label>조회 동물 선택</label>
-            <Selectbox name="userType" options={typeData} value={userType} onChange={setUserType} />
-            <PeriodSelector
-              name="period"
-              startDate={startDate}
-              endDate={endDate}
-              onStartDateChange={setStartDate}
-              onEndDateChange={setEndDate}
+            <Selectbox
+              name="userType"
+              options={typeData}
+              value={userType}
+              onChange={setUserType}
             />
-            <Button title="조회" theme="darkgray" onClick={adjustFilter} />
           </SearchArea>
         }
       />
@@ -135,9 +94,9 @@ export default function WeeklyAccess() {
         <ContentLoading />
       ) : (
         <>
-          <VisitorChart rank={responseRank} />
+          <WeekChart rank={responseRank} />
 
-          <RankList>
+          {/* <RankList>
             {ranks.map((rank) => (
               <div key={`${rank.rank}_${rank.name}`} className="box">
                 <div>
@@ -149,7 +108,7 @@ export default function WeeklyAccess() {
                 </div>
               </div>
             ))}
-          </RankList>
+          </RankList> */}
         </>
       )}
     </>
