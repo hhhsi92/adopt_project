@@ -133,6 +133,7 @@ export default function UserListTable(props: SetDateProps) {
       <RowInfo allCount={allCount} pageSize={pageSize} />
       <TableContainer>
         <Table
+          stickyHeader
           sx={{ minWidth: 750 }}
           aria-labelledby="tableTitle"
           className="MainTable"

@@ -5,7 +5,7 @@ import Pagination, { navigatePage } from "@/components/pagination/pagination";
 import RowInfo, { defaultPageSize } from "@/components/table/common/RowInfo";
 import TableHead from "@/components/table/common/TableHead";
 import api from "@common/API";
-import { formattedDateTime, imgNameCut } from "@common/Func";
+import { imgNameCut } from "@common/Func";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -13,16 +13,15 @@ import TableContainer from "@mui/material/TableContainer";
 import TableRow from "@mui/material/TableRow";
 import { useEffect, useState } from "react";
 import {
-  Link,
   useLoaderData,
   useLocation,
-  useNavigate,
+  useNavigate
 } from "react-router-dom";
 import { toast } from "react-toastify";
 
-import { loaderDataInterface } from "../list";
 import { apiKey } from "@/config";
 import axios from "axios";
+import { loaderDataInterface } from "../list";
 
 interface DataProps {
   breedCnt: number;
@@ -132,6 +131,7 @@ export default function ListTable() {
 
       <TableContainer>
         <Table
+          stickyHeader
           sx={{ minWidth: 750 }}
           aria-labelledby="tableTitle"
           className="MainTable"

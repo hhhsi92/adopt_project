@@ -16,7 +16,7 @@ import Button from "@/components/button/Button";
 import ListImage from "@/components/table/common/ListImage";
 import axios from "axios";
 import { loaderDataInterface } from "../list";
-
+import styled from "styled-components";
 
 interface DataProps {
   desertionNo: string;
@@ -89,18 +89,31 @@ export default function NoticeListTable(props: SetDateProps) {
           state: "notice",
           pageNo: page,
           numOfRows: pageSize,
-          upkind: filterData.type && filterData.type !== "전체" ? filterData.type : null,
-          upr_cd: filterData.location && filterData.location !== "전체" ? filterData.location : null,
-          bgnde: filterData.createDate && filterData.createDate === "기간선택" ? filterData.createDateStart.replaceAll("-", "") : null,
-          endde: filterData.createDate && filterData.createDate === "기간선택" ? filterData.createDateEnd.replaceAll("-", "") : null,
+          upkind:
+            filterData.type && filterData.type !== "전체"
+              ? filterData.type
+              : null,
+          upr_cd:
+            filterData.location && filterData.location !== "전체"
+              ? filterData.location
+              : null,
+          bgnde:
+            filterData.createDate && filterData.createDate === "기간선택"
+              ? filterData.createDateStart.replaceAll("-", "")
+              : null,
+          endde:
+            filterData.createDate && filterData.createDate === "기간선택"
+              ? filterData.createDateEnd.replaceAll("-", "")
+              : null,
         };
 
-
-        const response = await axios.get("/api/1543061/abandonmentPublicSrvc/abandonmentPublic", { params });
+        const response = await axios.get(
+          "/api/1543061/abandonmentPublicSrvc/abandonmentPublic",
+          { params }
+        );
         // console.log(response.data.response.body.items.item);
         setInfo(response.data.response.body.items.item);
         setAllCount(response.data.response.body.totalCount);
-
       } catch (err) {
         console.log(err);
       }
@@ -119,6 +132,7 @@ export default function NoticeListTable(props: SetDateProps) {
       <RowInfo allCount={allCount} pageSize={pageSize} />
       <TableContainer>
         <Table
+          stickyHeader
           sx={{ minWidth: 750 }}
           aria-labelledby="tableTitle"
           className="MainTable"
@@ -144,7 +158,9 @@ export default function NoticeListTable(props: SetDateProps) {
                     hover
                     tabIndex={-1}
                     key={`${index}_${row.desertionNo}`}
-                    onClick={() => {setData(row)}}
+                    onClick={() => {
+                      setData(row);
+                    }}
                     style={{ cursor: "pointer" }}
                   >
                     <TableCell>
@@ -166,7 +182,11 @@ export default function NoticeListTable(props: SetDateProps) {
                     <TableCell>{row.age}</TableCell>
                     <TableCell>{row.noticeNo}</TableCell>
                     <TableCell>
-                      <img src="https://img.icons8.com/ios/250/000000/marker.png" alt="" className="list_icon"/>
+                      <img
+                        src="https://img.icons8.com/ios/250/000000/marker.png"
+                        alt=""
+                        className="list_icon"
+                      />
                       {row.happenPlace}
                     </TableCell>
                     <TableCell>{StringDateDot(row.happenDt)}</TableCell>
