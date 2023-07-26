@@ -1,15 +1,15 @@
-import { MenuDataItem, menuData } from "@/config";
-import { useCallback, useEffect, useState } from "react";
+import { useState } from "react";
 import {
   IoCloseOutline as CloseIcon,
   IoMenuSharp as MenuIcon,
 } from "react-icons/io5";
-import { Link, useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { menus } from "../Topbar";
 
 export default function MobileMenu() {
   const location = useLocation();
+  const navigate = useNavigate();
   const pathName = location.pathname;
   const path = pathName.split("/")[1];
 
@@ -20,25 +20,29 @@ export default function MobileMenu() {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  const openMenu = useCallback((target: EventTarget) => {
-    console.log(target);
-  }, []);
+  const movePage = async (link: string, menuId: string) => {
+    menuId && setMainMenuId(menuId);
+    isMenuOpen && handleMenuOpen();
+    navigate(link);
+  };
 
   return (
     <div className="mobileMenu">
       <Topper>
-        <div className="logo">
-          <Link to="/">
-            <div className="title">
-              🐶 <div className="point">Adopt,</div> don’t Buy
-            </div>
-            <p>사지말고 입양하세요.</p>
-          </Link>
+        <div className="logo" onClick={() => {movePage("/", "main")}}>
+          <div className="title">
+            🐶 <div className="point">Adopt,</div> don’t Buy
+          </div>
+          <p>사지말고 입양하세요.</p>
         </div>
 
         <div className="buttonArea">
           <button onClick={handleMenuOpen}>
-            {isMenuOpen ? <CloseIcon color="#000"/> : <MenuIcon color="#000"/>}
+            {isMenuOpen ? (
+              <CloseIcon color="#000" />
+            ) : (
+              <MenuIcon color="#000" />
+            )}
           </button>
         </div>
       </Topper>
@@ -48,12 +52,20 @@ export default function MobileMenu() {
           <MainMenu>
             {menus.map((menu) => {
               return (
-                <li key={menu.title} className="nav-menu-list">
-                  <Link to={menu.link + menu.defaultLink}>
-                    <span className={mainMenuId === menu.id ? "menu_active" : undefined}>
-                      {menu.title}
-                    </span>
-                  </Link>
+                <li
+                  key={menu.title}
+                  className="nav-menu-list"
+                  onClick={() => {
+                    movePage(menu.link + menu.defaultLink, menu.id);
+                  }}
+                >
+                  <span
+                    className={
+                      mainMenuId === menu.id ? "menu_active" : null
+                    }
+                  >
+                    {menu.title}
+                  </span>
                 </li>
               );
             })}
@@ -71,17 +83,17 @@ const Topper = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 0 10px 0 20px;
+  background: #fff;
 
   & .logo {
-    & a {
-      display: block;
-      cursor: pointer;
-    }
-    & a .title {
+    display: block;
+    cursor: pointer;
+
+    & .title {
       font-weight: 900;
       font-size: 18px;
     }
-    & a p {
+    & p {
       font-size: 12px;
       letter-spacing: 0.4em;
       color: #525252;
@@ -135,6 +147,7 @@ const MenuArea = styled.div`
   }
   & .menus {
     display: flex;
+    height: 100vh;
   }
 `;
 
@@ -152,7 +165,7 @@ const MainMenu = styled.ul`
     font-weight: 400;
     display: grid;
     cursor: pointer;
-    margin: 20px;
+    margin: 25px;
 
     & span {
       color: white;
@@ -161,5 +174,10 @@ const MainMenu = styled.ul`
       transition: background-color 0.2s;
       opacity: 1;
     }
+
+    & span.menu_active {
+      color: #49cec3 !important;
+    }
+
   }
 `;

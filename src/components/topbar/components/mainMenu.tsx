@@ -16,7 +16,7 @@ export default function MainMenu() {
                 className={
                   location.pathname.indexOf(menu.link) === 0
                     ? "menu_active"
-                    : ""
+                    : null
                 }
               >
                 {menu.title}

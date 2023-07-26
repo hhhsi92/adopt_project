@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import "./topbar.css";
 import { useState, useEffect } from "react";
 import Header from "./components/header";
 import MainMenu from "./components/mainMenu";

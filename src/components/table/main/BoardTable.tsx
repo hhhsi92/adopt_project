@@ -74,9 +74,9 @@ export default function BoardTable(props: Props) {
     return <ContentLoading />;
   }
   return (
-    <TableContainer>
+    <TableContainer style={{height: "auto"}}>
       <SmallTable>
-        <Table size="small">
+        <Table size="small" stickyHeader>
           <colgroup>
             <col width="7%" />
             <col width="20%" />
