@@ -121,7 +121,8 @@ const SearchArea = styled.div`
   justify-content: flex-end;
 
   @media screen and (max-width: 768px) {
-    display: inline-grid;
+    display: inline-block;
+    width: 100%;
   }
 
   & > *:not(:last-child) {

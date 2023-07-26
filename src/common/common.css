@@ -331,6 +331,33 @@ table td.new {
   .content_right {
     left: 0;
     position: relative;
+    padding: 2rem 0rem 6rem;
+  }
+
+  .tag_blue {
+    width: 25px;
+    height: 20px;
+    font-size: 0.65rem;
+  }
+  
+  .tag_pink {
+    width: 25px;
+    height: 20px;
+    font-size: 0.65rem;
+  }
+  
+  .tag_gray {
+    width: 25px;
+    height: 20px;
+    font-size: 0.65rem;
+  }
+
+  .MainTable th, .SimpleTable th {
+    font-size: 0.7rem;
+  }
+
+  .MainTable td, .SimpleTable td {
+    font-size: 0.65rem;
   }
 }
 

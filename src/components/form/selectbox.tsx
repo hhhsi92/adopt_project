@@ -42,4 +42,8 @@ const StyledSelect = styled.select`
   height: 28px;
   padding: 0 0.5em 0 0.3em;
   border: solid 1px var(--darkgray-border);
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
 `;

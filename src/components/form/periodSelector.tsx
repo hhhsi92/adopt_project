@@ -105,6 +105,10 @@ const Container = styled.div`
   flex-direction: row;
   align-items: center;
 
+  @media screen and (max-width: 768px) {
+    display: inline-grid;
+  }
+
   & .hyphen {
     font-weight: 500;
     font-size: 13px;

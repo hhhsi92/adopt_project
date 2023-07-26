@@ -38,7 +38,7 @@ export default function MobileMenu() {
 
         <div className="buttonArea">
           <button onClick={handleMenuOpen}>
-            {isMenuOpen ? <CloseIcon /> : <MenuIcon />}
+            {isMenuOpen ? <CloseIcon color="#000"/> : <MenuIcon color="#000"/>}
           </button>
         </div>
       </Topper>
@@ -50,11 +50,7 @@ export default function MobileMenu() {
               return (
                 <li key={menu.title} className="nav-menu-list">
                   <Link to={menu.link + menu.defaultLink}>
-                    <span
-                      className={
-                        mainMenuId === menu.id ? "menu_active" : undefined
-                      }
-                    >
+                    <span className={mainMenuId === menu.id ? "menu_active" : undefined}>
                       {menu.title}
                     </span>
                   </Link>
@@ -119,6 +115,7 @@ const MenuArea = styled.div`
   position: fixed;
   left: 100vw;
   width: 100vw;
+  height: 20%;
   bottom: 0;
   top: 55px;
   transition: left 0.5s;
@@ -143,36 +140,26 @@ const MenuArea = styled.div`
 
 const MainMenu = styled.ul`
   list-style: none;
-  text-align: right;
+  text-align: center;
   display: table-cell;
   width: 100vw;
-  height: 100vh;
+  height: 20%;
   justify-content: center;
   background: #3d3d3d;
   vertical-align: top;
-
-  &:last-child {
-    display: grid;
-  }
 
   & li.nav-menu-list {
     font-weight: 400;
     display: grid;
     cursor: pointer;
+    margin: 20px;
 
     & span {
       color: white;
-      font-size: 12px;
+      font-size: 14px;
       letter-spacing: -0.02em;
-      padding: 13px 15px 11.5px;
       transition: background-color 0.2s;
       opacity: 1;
-      background: none;
-      text-align: center;
-
-      &:hover {
-        background: #49cec3;
-      }
     }
   }
 `;

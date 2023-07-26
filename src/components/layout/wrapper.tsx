@@ -19,6 +19,6 @@ const Container = styled.div`
 
   @media all and (max-width: 768px) {
     width: calc(100% - 40px);
-    margin-left: ${(props) => (props.theme.left ? "20px" : "auto")};
+    // margin-left: ${(props) => (props.theme.left ? "20px" : "auto")};
   }
 `;

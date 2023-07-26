@@ -4,21 +4,25 @@
   display: flex;
   align-items: center;
 }
+
 .form_singleCheck label {
   font-size: 13px;
   color: var(--darkgray-color);
 }
+
 .inputList {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
 }
+
 .inputList label {
   margin-right: 15px;
   font-weight: 500;
   font-size: 13px;
   color: #888888;
 }
+
 .form_textInput {
   position: relative;
   background: var(--white-bg);
@@ -28,12 +32,14 @@
   height: 28px;
   padding-right: 60px;
 }
+
 .form_textInput input {
   width: 100%;
   height: 100%;
   font-size: 13px;
   padding: 0 0.5em;
 }
+
 .form_textInput span {
   position: absolute;
   right: 4px;
@@ -41,12 +47,15 @@
   font-size: 13px;
   color: var(--gray-color);
 }
+
 .form_selectbox {
   font-size: 13px;
 }
+
 .form_fileInput input {
   display: none;
 }
+
 .form_fileInput label {
   font-size: 13px;
   color: var(--white-color);
@@ -58,9 +67,11 @@
   width: 70px;
   height: 28px;
 }
+
 .form_fileInput label:hover {
   opacity: 0.5;
 }
+
 .form_fileInput .file {
   display: flex;
   align-items: center;
@@ -70,6 +81,7 @@
   max-width: 400px;
   margin-top: 10px;
 }
+
 /* --------------------------------- filter */
 .searchBtn {
   margin: 0px 8px;
@@ -104,3 +116,17 @@
   height: 30px;
   width: 340px;
 }
+
+/* -------------------------------------------------------------- 모바일 반응형 적용 */
+
+@media screen and (max-width: 768px) {
+  .searchKeyword {
+    display: contents;
+  }
+
+  .searchKeyword .keyword {
+    width: 100%;
+  }
+}
+
+/* -------------------------------------------------------------- 모바일 반응형 적용 */

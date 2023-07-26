@@ -49,7 +49,6 @@ export default function Button(props: ButtonProps) {
 
 const StyledButton = styled.button`
   position: relative;
-
   font-size: 12px;
   display: inline-flex;
   align-items: center;
@@ -58,6 +57,13 @@ const StyledButton = styled.button`
   background: var(${(props) => props.theme.background});
   height: ${(props) => props.theme.height};
   padding: ${(props) => props.theme.padding};
+
+  @media screen and (max-width: 768px) {
+    font-size: 0.65rem;
+    min-width: 50px;
+    width: auto;
+    justify-content: center;
+  }
 
   & .spinner {
     position: absolute;

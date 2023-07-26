@@ -43,6 +43,10 @@ const StyledFullBox = styled.div`
   margin-top: 30px;
   border-radius: 10px;
 
+  @media screen and (max-width: 768px) {
+    padding: 10px;
+  }
+
   & .titleArea {
     display: flex;
     justify-content: space-between;

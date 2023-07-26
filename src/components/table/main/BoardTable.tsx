@@ -3,7 +3,7 @@ import {
   StringDateDot,
   StringDateSimple,
   getGenderText,
-  getTypeText
+  getTypeText,
 } from "@/common/Func";
 import { DataProps } from "@/common/Types";
 import NoContent from "@/components/empty/noContent";
@@ -12,6 +12,7 @@ import {
   Table,
   TableBody,
   TableCell,
+  TableContainer,
   TableHead,
   TableRow,
 } from "@material-ui/core";
@@ -73,57 +74,74 @@ export default function BoardTable(props: Props) {
     return <ContentLoading />;
   }
   return (
-    <SmallTable>
-      <Table size="small">
-        <colgroup>
-          <col width="7%" />
-          <col width="20%" />
-          <col width="6%" />
-          <col width="8%" />
-          <col width="14%" />
-          <col width="9%" />
-        </colgroup>
-        <TableHead>
-          <TableRow>
-            <TableCell>번호</TableCell>
-            <TableCell>품종</TableCell>
-            <TableCell>성별</TableCell>
-            <TableCell>나이</TableCell>
-            <TableCell>공고번호</TableCell>
-            <TableCell>등록일</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {info.length > 0 ? (
-            info.map((row: DataProps, i) => (
-              <TableRow
-                key={i + 1}
-                className={row.happenDt === StringDateSimple(new Date()) ? "new" : null}
-              >
-                <TableCell>{CommaNumber(allCount - i)}</TableCell>
-                <TableCell onClick={() => {setData(row)}}>
-                  <Link to={``} style={{ display: "flex", fontWeight: "bold" }}>
-                    <ListImage uri={row.popfile} size={"mini"} />
-                    {getTypeText(row.kindCd)}
-                  </Link>
-                </TableCell>
-                <TableCell>{getGenderText(row.sexCd)}</TableCell>
-                <TableCell>{row.age}</TableCell>
-                <TableCell>{row.noticeNo}</TableCell>
-                <TableCell className={row.happenDt === StringDateSimple(new Date()) ? "new" : null}>
-                  {row.happenDt && StringDateDot(row.happenDt)}
+    <TableContainer>
+      <SmallTable>
+        <Table size="small">
+          <colgroup>
+            <col width="7%" />
+            <col width="20%" />
+            <col width="6%" />
+            <col width="8%" />
+            <col width="14%" />
+            <col width="9%" />
+          </colgroup>
+          <TableHead>
+            <TableRow>
+              <TableCell>번호</TableCell>
+              <TableCell>품종</TableCell>
+              <TableCell>성별</TableCell>
+              <TableCell>나이</TableCell>
+              <TableCell>공고번호</TableCell>
+              <TableCell>등록일</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {info.length > 0 ? (
+              info.map((row: DataProps, i) => (
+                <TableRow
+                  key={i + 1}
+                  className={
+                    row.happenDt === StringDateSimple(new Date()) ? "new" : null
+                  }
+                >
+                  <TableCell>{CommaNumber(allCount - i)}</TableCell>
+                  <TableCell
+                    onClick={() => {
+                      setData(row);
+                    }}
+                  >
+                    <Link
+                      to={``}
+                      style={{ display: "flex", fontWeight: "bold" }}
+                    >
+                      <ListImage uri={row.popfile} size={"mini"} />
+                      {getTypeText(row.kindCd)}
+                    </Link>
+                  </TableCell>
+                  <TableCell>{getGenderText(row.sexCd)}</TableCell>
+                  <TableCell>{row.age}</TableCell>
+                  <TableCell>{row.noticeNo}</TableCell>
+                  <TableCell
+                    className={
+                      row.happenDt === StringDateSimple(new Date())
+                        ? "new"
+                        : null
+                    }
+                  >
+                    {row.happenDt && StringDateDot(row.happenDt)}
+                  </TableCell>
+                </TableRow>
+              ))
+            ) : (
+              <TableRow>
+                <TableCell colSpan={6}>
+                  <NoContent />
                 </TableCell>
               </TableRow>
-            ))
-          ) : (
-            <TableRow>
-              <TableCell colSpan={6}>
-                <NoContent />
-              </TableCell>
-            </TableRow>
-          )}
-        </TableBody>
-      </Table>
-    </SmallTable>
+            )}
+          </TableBody>
+        </Table>
+      </SmallTable>
+    </TableContainer>
   );
 }

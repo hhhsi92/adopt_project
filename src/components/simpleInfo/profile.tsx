@@ -69,6 +69,10 @@ const Container = styled.div`
     display: inline-block;
     border-radius: 10px;
 
+    @media screen and (max-width: 768px) {
+      width: 100%;
+    }
+
     & img {
       width: 100%;
       height: 100%;
@@ -90,6 +94,10 @@ const Container = styled.div`
         font-size: 24px;
         letter-spacing: -0.02em;
         margin-right: 10px;
+
+        @media screen and (max-width: 768px) {
+          font-size: 18px;
+        }  
 
         & small {
           font-weight: 500;

@@ -26,6 +26,10 @@ const SmallTableWrap = styled.div`
     position: relative;
     table-layout: fixed;
 
+    @media screen and (max-width: 768px) {
+      table-layout: auto;
+    }
+
     & tr {
       & th,
       td {

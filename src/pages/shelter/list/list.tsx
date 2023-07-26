@@ -24,7 +24,6 @@ export interface loaderDataInterface extends commonLoaderType {
 
 export default function List() {
   const loaderData = useLoaderData() as loaderDataInterface;
-  const navigate = useNavigate();
   const [keywordCate, setKeywordCate] = useState("");
   const [keyword, setKeyword] = useState("");
 
