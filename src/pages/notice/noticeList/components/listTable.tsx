@@ -1,4 +1,9 @@
-import { StringDateDot, getGenderText, getTypeText } from "@/common/Func";
+import {
+  StringDateDot,
+  StringDateSimple,
+  getGenderText,
+  getTypeText,
+} from "@/common/Func";
 import NoContent from "@/components/empty/noContent";
 import Loading from "@/components/loading/loadSpinner";
 import Pagination, { navigatePage } from "@/components/pagination/pagination";
@@ -147,7 +152,7 @@ export default function NoticeListTable(props: SetDateProps) {
             <col width="8%" />
             <col width="*" />
             <col width="*" />
-            <col width="6%" />
+            <col width="8.5%" />
           </colgroup>
           <TableHead headCells={headCells} order={"desc"} orderCate={""} />
           <TableBody>
@@ -189,7 +194,15 @@ export default function NoticeListTable(props: SetDateProps) {
                       />
                       {row.happenPlace}
                     </TableCell>
-                    <TableCell>{StringDateDot(row.happenDt)}</TableCell>
+                    <TableCell
+                      className={
+                        row.happenDt === StringDateSimple(new Date())
+                          ? "new"
+                          : null
+                      }
+                    >
+                      {StringDateDot(row.happenDt)}
+                    </TableCell>
                   </TableRow>
                 );
               })
