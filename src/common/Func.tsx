@@ -6,13 +6,14 @@ export function replaceUrlParameter(url: string) {
   return url;
 }
 
-//일주일 간의 날짜 구하기 (오늘날짜 ~ 7일전까지)
+//일주일 날짜 배열 구하기 (D-7 ~ 오늘)
 export function getCurrentWeek() {
   const day = new Date();
+  day.setDate(day.getDate() - 6);
   const result = [day.toISOString().slice(0, 10)];
 
   for (let i = 1; i < 7; i++) {
-    day.setTime(day.getTime() - 86400000);
+    day.setTime(day.getTime() + 86400000);
     result.push(day.toISOString().slice(0, 10));
   }
   

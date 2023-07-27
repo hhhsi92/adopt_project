@@ -1,9 +1,6 @@
-import styled from "styled-components";
-import { useState, useEffect } from "react";
-import TitleArea from "./titleArea";
 import { IoArrowForwardOutline } from "react-icons/io5";
-import { faker } from "@faker-js/faker";
-import { formattedDateTime } from "@/common/Func";
+import styled from "styled-components";
+import TitleArea from "./titleArea";
 
 export default function connectSite() {
   return (

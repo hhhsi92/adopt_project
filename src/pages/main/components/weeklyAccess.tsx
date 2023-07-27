@@ -35,7 +35,6 @@ export default function WeeklyAccess() {
 
   useEffect(() => {
     let searchUserType = userType;
-
     getRanks(searchUserType);
   }, [userType]);
 
@@ -44,7 +43,7 @@ export default function WeeklyAccess() {
     
     const _ranks: ResponseRank[] = [];
 
-    const weeks = getCurrentWeek().reverse();
+    const weeks = getCurrentWeek();
     
     for (const data of weeks) {      
       let params: any = {
